@@ -1,7 +1,7 @@
 # Json Parsing in Python
-Certainly! To convert the content into GitHub-flavored Markdown for a README or notes file, you can use the following structure. For GitHub, you can use the `.md` file extension for Markdown files.
 
-```markdown
+
+
 # JSON Parser for Table-like String
 
 This document outlines how to write a JSON parser to convert a table-like string into valid JSON format. JSON (JavaScript Object Notation) is a structured data format widely used for data interchange.
