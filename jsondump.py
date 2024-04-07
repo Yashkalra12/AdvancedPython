@@ -8,11 +8,9 @@ response_json=json.loads(response.text)
 print(response_json)
 print()
 
-street=response_json['address']['street']
+street=response_json['address']
 
 print(street)
 
 print()
-data_serialized=json.dumps(street)
-print(type(data_serialized))
-print(data_serialized)
+data_serialized=json.dump(street, open('address.json',"w"),indent=4)
