@@ -89,7 +89,32 @@ class BinarySearchTreeNode:
                 return self.right.search(value)
             else:
                 return False     
-               
+            
+
+    def delete(self,value):
+        if value < self.data:
+            if self.left:
+                self.left = self.left.delete(value)
+        elif value > self.data:
+            if self.right:
+                self.right = self.right.delete(value)
+        else:  # Found the node to delete
+            if self.left is None and self.right is None:
+                return None  # Node has no children
+            elif self.left is None:
+                return self.right  # Node has only right child
+            elif self.right is None:
+                return self.left  # Node has only left child
+            else:
+                # Node has both left and right children
+                # Find the minimum value in the right subtree
+                min_value = self.right.find_min()
+                self.data = min_value
+                # Delete the node with the minimum value in the right subtree
+                self.right = self.right.delete(min_value)
+        return self
+        
+        
 def build_tree(elements):
     root=BinarySearchTreeNode(elements[0])
     for i in range(len(elements)):
@@ -100,7 +125,9 @@ def build_tree(elements):
 if __name__=='__main__':
     numbers=[17,4,1,20,9,23,18,34]
     numbers_tree= build_tree(numbers)
+    print(f'Maximum_Value: {numbers_tree.find_max()}')
     print(f'InOrder: {numbers_tree.in_order_traversal()}')
+    numbers_tree.delete(34)
     print(f'PreOrder: {numbers_tree.pre_order_traversal()}')
     print(f'PostOrder: {numbers_tree.post_order_traversal()}')
     print(f'Minimum_Value: {numbers_tree.find_min()}')
